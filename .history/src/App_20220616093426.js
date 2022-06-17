@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <h2>This is count : {count}</h2>
-      <Counter />
+      {/* <Counter count={count} setCount={setCount} /> */}
     </>
   );
 }
