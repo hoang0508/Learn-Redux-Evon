@@ -9,6 +9,7 @@ import Card from "./uis/Card";
 
 function App() {
   // const count = useSelector((state) => state.counter.count);
+  const globalOptions = useSelector((state) => state.global);
 
   return (
     <>

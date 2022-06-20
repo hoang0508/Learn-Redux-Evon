@@ -70,9 +70,7 @@ const Counter = (props) => {
         />
         <button
           onClick={handleAddAmount}
-          className={`inline-block border-gray-200 p-2  border ${
-            globalOptions === true ? "dark:bg-slate-900" : "bg-blue-500"
-          }  text-white`}
+          className="inline-block border-gray-200 p-2  border bg-blue-500 text-white"
         >
           Add Amount
         </button>

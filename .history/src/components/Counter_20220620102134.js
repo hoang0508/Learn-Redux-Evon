@@ -15,7 +15,7 @@ import SwitchToggle from "../SwitchToggle";
 const Counter = (props) => {
   const [incrementAmount, setIncrementAmount] = useState(2);
   const count = useSelector((state) => state.counter.count);
-  const globalOptions = useSelector((state) => state.global.darkMode);
+  const globalOptions = useSelector((state) => state.global);
   console.log(
     "🚀 ~ file: Counter.js ~ line 19 ~ Counter ~ globalOptions",
     globalOptions
@@ -71,7 +71,7 @@ const Counter = (props) => {
         <button
           onClick={handleAddAmount}
           className={`inline-block border-gray-200 p-2  border ${
-            globalOptions === true ? "dark:bg-slate-900" : "bg-blue-500"
+            globalOptions === true ? "dark:bg-slate-900" : "bg-blue-500 "
           }  text-white`}
         >
           Add Amount

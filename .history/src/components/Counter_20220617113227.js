@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useDarkMode from "../hooks/useDarkMode";
-import { decrement, increment, addamount } from "../redux-tookit/counterSlice";
-import { toggleDarkMode } from "../redux-tookit/globalSlice";
-import SwitchToggle from "../SwitchToggle";
+import { decrement, increment } from "../redux-tookit/counterSlice";
 // import {
 //   addamount,
 //   decrement,
@@ -15,11 +12,6 @@ import SwitchToggle from "../SwitchToggle";
 const Counter = (props) => {
   const [incrementAmount, setIncrementAmount] = useState(2);
   const count = useSelector((state) => state.counter.count);
-  const globalOptions = useSelector((state) => state.global.darkMode);
-  console.log(
-    "🚀 ~ file: Counter.js ~ line 19 ~ Counter ~ globalOptions",
-    globalOptions
-  );
   const dispatch = useDispatch();
   const handleIncrement = () => {
     // setCount(() => count + 1);
@@ -30,10 +22,10 @@ const Counter = (props) => {
     dispatch(decrement());
   };
 
-  // increment addAmount
-  const handleAddAmount = () => {
-    dispatch(addamount(Number(incrementAmount)));
-  };
+  // // increment addAmount
+  // const handleAddAmount = () => {
+  //   dispatch(addamount(Number(incrementAmount)));
+  // };
 
   // // increment async
   // const handleIncrementAsync = () => {
@@ -61,7 +53,7 @@ const Counter = (props) => {
           Decrement
         </button>
       </div>
-      <div className="mt-3">
+      {/* <div className="mt-3">
         <input
           className="border border-gray-200 p-3"
           type="number"
@@ -70,14 +62,11 @@ const Counter = (props) => {
         />
         <button
           onClick={handleAddAmount}
-          className={`inline-block border-gray-200 p-2  border ${
-            globalOptions === true ? "dark:bg-slate-900" : "bg-blue-500"
-          }  text-white`}
+          className="inline-block border-gray-200 p-2 border bg-blue-500 text-white"
         >
           Add Amount
         </button>
       </div>
-      {/*
       <div>
         <button
           onClick={handleIncrementAsync}
@@ -94,7 +83,6 @@ const Counter = (props) => {
           Add If odd
         </button>
       </div> */}
-      <SwitchToggle />
     </div>
   );
 };
