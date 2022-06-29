@@ -1,5 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const incrementAsync2 = createAsyncThunk('increment', 
+  async (payload) => {
+    const reponse = await fetchCount(payload);
+    return ((reponse.data));
+  }
+         
+);
+
 const globalSlice = createSlice({
   name: "global",
   initialState: {
@@ -15,8 +23,11 @@ const globalSlice = createSlice({
       ...state,
       showSidebar: actions.payload,
     }),
+
   },
-  extraReducers: {},
+  extraReducers: {
+
+  }
 });
 
 export const { toggleDarkMode, toggleSidebar } = globalSlice.actions;

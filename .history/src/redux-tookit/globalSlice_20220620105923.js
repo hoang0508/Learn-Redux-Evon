@@ -16,7 +16,6 @@ const globalSlice = createSlice({
       showSidebar: actions.payload,
     }),
   },
-  extraReducers: {},
 });
 
 export const { toggleDarkMode, toggleSidebar } = globalSlice.actions;
