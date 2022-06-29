@@ -6,18 +6,12 @@ import HackerNews from "./components/hackerNews";
 function App() {
   useEffect(() => {
     function* demoGenerator() {
-      console.log("running");
-      // yield 1;
-      // yield 2;
-      // yield 3;
-      let id = 1;
-      while (true) {
-        yield id;
-        id++;
-      }
+      yield 1;
+      yield 2;
+      yield 3;
     }
     const gen = demoGenerator();
-    console.log(gen.next());
+    console.log(gen);
   }, []);
   return <>{/* <HackerNews></HackerNews> */}</>;
 }
