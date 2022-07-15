@@ -12,6 +12,7 @@ const HackerNews = () => {
   const { hits, loading, errorMessage, query } = useSelector(
     (state) => state.news
   );
+  console.log("🚀 ~ file: hackerNews.js ~ line 13 ~ HackerNews ~ query", query);
 
   // onChange query
   const handleChangeQuery = debounce((e) => {

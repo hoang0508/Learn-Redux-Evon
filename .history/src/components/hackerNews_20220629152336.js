@@ -2,27 +2,21 @@
 import { debounce } from "lodash";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getNews, setQuery } from "../sagas/news/newsSlice";
+import { getNews } from "../sagas/news/newsSlice";
 
 const HackerNews = () => {
   // dispatch
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getNews("angular"));
+  }, [dispatch]);
 
   // useSelector
-  const { hits, loading, errorMessage, query } = useSelector(
-    (state) => state.news
-  );
+  const { hits, loading, errorMessage } = useSelector((state) => state.news);
 
-  // onChange query
-  const handleChangeQuery = debounce((e) => {
+  const handleChangeQuery = debounce(() => {
     // logic code here
-    dispatch(setQuery(e.target.value));
-  }, 500);
-
-  useEffect(() => {
-    dispatch(getNews(query));
-  }, [dispatch, query]);
-
+  });
   return (
     <div className="w-2/4 p-5 mx-auto mt-5 mb-5 bg-white rounded-lg shadow-md">
       <div className="flex mb-5 gap-x-5">
@@ -30,8 +24,8 @@ const HackerNews = () => {
           type="text"
           className="block w-full p-5 transition-all border border-gray-200 rounded-md focus:border-blue-400"
           placeholder="Typing your keyword..."
-          defaultValue={query}
-          onChange={handleChangeQuery}
+          // defaultValue={query}
+          // onChange={(e) => setQuery(e.target.value)}
         />
       </div>
       {loading && (

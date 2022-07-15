@@ -8,11 +8,6 @@ const HackerNews = () => {
   // dispatch
   const dispatch = useDispatch();
 
-  // useSelector
-  const { hits, loading, errorMessage, query } = useSelector(
-    (state) => state.news
-  );
-
   // onChange query
   const handleChangeQuery = debounce((e) => {
     // logic code here
@@ -20,8 +15,13 @@ const HackerNews = () => {
   }, 500);
 
   useEffect(() => {
-    dispatch(getNews(query));
-  }, [dispatch, query]);
+    dispatch(getNews());
+  }, [dispatch]);
+
+  // useSelector
+  const { hits, loading, errorMessage, query } = useSelector(
+    (state) => state.news
+  );
 
   return (
     <div className="w-2/4 p-5 mx-auto mt-5 mb-5 bg-white rounded-lg shadow-md">
@@ -31,7 +31,7 @@ const HackerNews = () => {
           className="block w-full p-5 transition-all border border-gray-200 rounded-md focus:border-blue-400"
           placeholder="Typing your keyword..."
           defaultValue={query}
-          onChange={handleChangeQuery}
+          // onChange={(e) => setQuery(e.target.value)}
         />
       </div>
       {loading && (
